@@ -2,7 +2,8 @@ const express = require("express");
 const connectToMongo = require("./db");
 const cors = require("cors");
 require("dotenv").config();
-
+const routesAuth = require("./routes/auth");
+const routesNotes = require("./routes/notes");
 connectToMongo();
 
 const app = express();
@@ -14,8 +15,8 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/notes", require("./routes/notes"));
+app.use("/api/auth", routesAuth);
+app.use("/api/notes", routesNotes);
 
 app.get("/", (req, res) => {
   res.send("hello world");
