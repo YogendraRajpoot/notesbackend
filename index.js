@@ -14,6 +14,8 @@ app.use(cors());
 // Available routes
 
 app.use(express.json());
+app.use(routesAuth)
+app.use(routesNotes)
 
 app.use("/api/auth", routesAuth);
 app.use("/api/notes", routesNotes);
